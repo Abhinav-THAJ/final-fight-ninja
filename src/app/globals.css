@@ -1,26 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap");
 @import "tailwindcss";
 
+/* ── Brand tokens ──────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-deep: #060404;
+  --bg-card: #0d0303;
+  --red-core: #cc1a1a;
+  --red-bright: #e02020;
+  --red-glow: rgba(200, 20, 20, 0.5);
+  --red-dim: rgba(200, 20, 20, 0.15);
+  --text-body: #b89090;    /* readable body text */
+  --text-muted: #7a5555;   /* muted / secondary */
+  --text-dim: #4a3030;     /* labels / very dim */
+  --border-faint: #1e0707;
+  --border-red: rgba(204, 26, 26, 0.3);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Reset / base ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  background: #060404;
+  color: #c8a8a8;
+  font-family: "Inter", "Barlow Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
+
+/* ── Display font ───────────────────────────────────────────────── */
+.font-display {
+  font-family: "Bebas Neue", "Barlow Condensed", sans-serif;
+  text-align: inherit;
+}
+
+/* ── Nuclear centering fix for Bebas Neue ────────────────────────── */
+/* Bebas Neue ignores text-align from Tailwind utilities in some browsers.
+   The flex-col items-center centering approach makes h2 full-width but still
+   left-aligns the text glyphs. We force center on all font-display headings
+   that are inside a centered flex context or have inline center style. */
+h2.font-display,
+h1.font-display,
+h3.font-display {
+  text-align: inherit;
+  display: block;
+  width: 100%;
+}
+
+/* When nearest ancestor has items-center flex layout, center text */
+.flex.flex-col.items-center > h2,
+.flex.flex-col.items-center > h1,
+.flex.flex-col.items-center > h3 {
+  text-align: center;
+}
+
+/* Inline style override helper */
+[style*="text-align: center"] h2,
+[style*="text-align: center"] h1,
+[style*="text-align:center"] h2 {
+  text-align: center;
+}
+
+/* Direct inline on element */
+h2[style*="text-align"],
+h1[style*="text-align"] {
+  text-align: center;
+}
+
+/* ── Film grain / Noise ─────────────────────────────────────────── */
+@keyframes noiseShift {
+  0%   { background-position: 0 0; }
+  10%  { background-position: -5% -5%; }
+  20%  { background-position: -10% 5%; }
+  30%  { background-position: 5% -10%; }
+  40%  { background-position: -5% 15%; }
+  50%  { background-position: -10% 5%; }
+  60%  { background-position: 15% 0; }
+  70%  { background-position: 0 10%; }
+  80%  { background-position: 3% 35%; }
+  90%  { background-position: -10% 10%; }
+  100% { background-position: 0 0; }
+}
+
+.noise-layer {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  animation: noiseShift 0.1s steps(1) infinite;
+  opacity: 0.04;
+}
+
+/* ── Logo flicker ──────────────────────────────────────────────── */
+@keyframes logoFlicker {
+  0%, 94%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(220, 30, 30, 0.6))
+            drop-shadow(0 0 55px rgba(180, 0, 0, 0.3));
+  }
+  95% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 8px rgba(220, 30, 30, 0.2));
+  }
+  96% {
+    opacity: 1;
+    filter: drop-shadow(0 0 28px rgba(220, 30, 30, 0.75))
+            drop-shadow(0 0 75px rgba(180, 0, 0, 0.42));
+  }
+}
+
+.logo-flicker-anim {
+  animation: logoFlicker 4s ease-in-out infinite;
+}
+
+/* ── Scanline ───────────────────────────────────────────────────── */
+@keyframes scanline {
+  0% { top: -2%; }
+  100% { top: 102%; }
+}
+
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(204,26,26,0.07) 50%, transparent);
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+  z-index: 1;
+}
+
+/* ── Glow pulse ─────────────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.05); }
+}
+
+.glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ── Scroll bounce ──────────────────────────────────────────────── */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 0.9; }
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ── Section separator line ─────────────────────────────────────── */
+.red-sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(204,26,26,0.35) 40%, rgba(204,26,26,0.35) 60%, transparent);
+}
+
+/* ── Gradient text ──────────────────────────────────────────────── */
+.text-gradient-red {
+  background: linear-gradient(135deg, #ff5555 0%, #cc1a1a 55%, #990000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Input focus glow ───────────────────────────────────────────── */
+.input-glow:focus {
+  box-shadow: 0 0 0 1px #cc1a1a, 0 0 20px rgba(204, 26, 26, 0.15);
+  border-color: #cc1a1a !important;
+  outline: none;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #0a0505; }
+::-webkit-scrollbar-thumb { background: #3a0a0a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #cc1a1a; }
