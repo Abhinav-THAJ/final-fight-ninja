@@ -49,14 +49,14 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.25 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
           scrolled
             ? "bg-[#060404]/96 backdrop-blur-xl border-b border-[#1e0707]"
             : "bg-transparent"
         }`}
       >
         {/* Nav container — max-width matches page sections */}
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-16
+        <div className="w-full mx-auto sm:px-8 lg:px-32 xl:px-32
                         flex items-center justify-between h-[68px]">
 
           {/* Logo */}

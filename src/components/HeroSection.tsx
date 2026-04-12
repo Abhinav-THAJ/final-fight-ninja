@@ -92,10 +92,10 @@ export default function HeroSection() {
                       flex flex-col items-center text-center gap-4 sm:gap-5 mt-[72px]">
 
         {/* Tag */}
-        <div ref={tagRef} style={{ opacity: 0 }}
+        {/* <div ref={tagRef} style={{ opacity: 0 }}
           className="inline-block text-[9px] tracking-[0.5em] uppercase text-[#cc8888] border border-[#331111] px-4 py-1.5">
           Est. 2024 · Premium Fight Training
-        </div>
+        </div> */}
 
         {/* Logo */}
         <div ref={logoRef} style={{ opacity: 0 }} className="logo-flicker-anim w-full flex justify-center">
