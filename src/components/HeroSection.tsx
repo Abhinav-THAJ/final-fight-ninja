@@ -73,9 +73,9 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
 
-      {/* BG */}
-      <div ref={bgRef} className="absolute inset-0 z-0 scale-105 transition-transform duration-[120ms] ease-out"
-        style={{ backgroundImage:"url('/hero_bg.png')", backgroundSize:"cover", backgroundPosition:"center 30%" }} />
+      {/* BG Image generated from User Prompt */}
+      <div ref={bgRef} className="absolute inset-0 z-0 scale-[1.05] transition-transform duration-[120ms] ease-out pointer-events-none"
+        style={{ backgroundImage:"url('/anti_gravity_kickboxer.png')", backgroundSize:"cover", backgroundPosition:"center 30%" }} />
 
       {/* Overlays */}
       <div ref={overlayRef} className="absolute inset-0 z-[1]"

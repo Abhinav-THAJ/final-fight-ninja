@@ -6,6 +6,7 @@ import WhyChooseSection from "@/components/WhyChooseSection";
 import ProgramsSection from "@/components/ProgramsSection";
 import CTABanner from "@/components/CTABanner";
 import ContactSection from "@/components/ContactSection";
+import AthletesSection from "@/components/AthletesSection";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <AboutSection />
       <WhyChooseSection />
       <ProgramsSection />
+      <AthletesSection />
       <CTABanner />
       <ContactSection />
     </main>
