@@ -85,7 +85,7 @@ export default function ProgramsPage() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center mb-32">
           <div className="gta-image-container relative aspect-[4/3] rounded-sm overflow-hidden border border-[#2a0f0f] shadow-[0_0_40px_rgba(204,26,26,0.08)]">
             <div className="img-wrapper absolute inset-0 -top-[20%] h-[140%]">
-              <Image src="/ai_sparring.png" fill alt="Live Sparring" className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src="/forge.jpeg" fill alt="Live Sparring" className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#060404] to-transparent opacity-90" />
             <div className="absolute bottom-6 left-8 right-8">
@@ -132,7 +132,7 @@ export default function ProgramsPage() {
           </div>
           <div className="gta-image-container order-1 md:order-2 relative aspect-[4/3] rounded-sm overflow-hidden border border-[#2a0f0f] shadow-[0_0_40px_rgba(204,26,26,0.08)]">
             <div className="img-wrapper absolute inset-0 -top-[20%] h-[140%]">
-              <Image src="/ai_kettlebell.png" fill alt="Strength and Conditioning" className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image src="/strength.jpeg" fill alt="Strength and Conditioning" className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#060404] to-transparent opacity-90" />
             <div className="absolute bottom-6 left-8 right-8">

@@ -35,7 +35,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 12); // Offset to center the glove
+      cursorX.set(e.clientX - 12); // Offset to center the shuriken
       cursorY.set(e.clientY - 12);
       if (!isVisible) setIsVisible(true);
     };
@@ -83,7 +83,9 @@ export default function CustomCursor() {
         animate={{ opacity: isHovering || isClicking ? 0 : 0.2, scale: 0.6 }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14.5 4V2.5C14.5 1.67157 13.8284 1 13 1H7C6.17157 1 5.5 1.67157 5.5 2.5V4M5.5 4H14.5M5.5 4C4.11929 4 3 5.11929 3 6.5V11.5C3 12.8361 3.25055 14.1561 3.73145 15.3853L5.5 19.9079C6.01524 21.2251 7.29177 22.081 8.70014 22.081C9.64552 22.081 10.5513 22.0305 11.2307 21.5776C12.5517 20.697 13.9103 19.3486 14.8698 17.5843C15.9328 15.6293 16.5 13.5654 16.5 11.5V6.5C16.5 5.11929 15.3807 4 14.5 4ZM16.5 7H18.5C19.8807 7 21 8.11929 21 9.5V10.5C21 11.8807 19.8807 13 18.5 13H16.5" fill="#cc1a1a"/>
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#cc1a1a"/>
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" stroke="#ff6666" strokeWidth="0.5" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="2" fill="#ff3333"/>
         </svg>
       </motion.div>
 
@@ -94,7 +96,9 @@ export default function CustomCursor() {
         animate={{ opacity: isHovering || isClicking ? 0 : 0.4, scale: 0.8 }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14.5 4V2.5C14.5 1.67157 13.8284 1 13 1H7C6.17157 1 5.5 1.67157 5.5 2.5V4M5.5 4H14.5M5.5 4C4.11929 4 3 5.11929 3 6.5V11.5C3 12.8361 3.25055 14.1561 3.73145 15.3853L5.5 19.9079C6.01524 21.2251 7.29177 22.081 8.70014 22.081C9.64552 22.081 10.5513 22.0305 11.2307 21.5776C12.5517 20.697 13.9103 19.3486 14.8698 17.5843C15.9328 15.6293 16.5 13.5654 16.5 11.5V6.5C16.5 5.11929 15.3807 4 14.5 4ZM16.5 7H18.5C19.8807 7 21 8.11929 21 9.5V10.5C21 11.8807 19.8807 13 18.5 13H16.5" fill="#cc1a1a"/>
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="#cc1a1a"/>
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" stroke="#ff6666" strokeWidth="0.5" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="2" fill="#ff3333"/>
         </svg>
       </motion.div>
 
@@ -115,7 +119,9 @@ export default function CustomCursor() {
         transition={{ type: "spring", stiffness: 450, damping: 20 }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14.5 4V2.5C14.5 1.67157 13.8284 1 13 1H7C6.17157 1 5.5 1.67157 5.5 2.5V4M5.5 4H14.5M5.5 4C4.11929 4 3 5.11929 3 6.5V11.5C3 12.8361 3.25055 14.1561 3.73145 15.3853L5.5 19.9079C6.01524 21.2251 7.29177 22.081 8.70014 22.081C9.64552 22.081 10.5513 22.0305 11.2307 21.5776C12.5517 20.697 13.9103 19.3486 14.8698 17.5843C15.9328 15.6293 16.5 13.5654 16.5 11.5V6.5C16.5 5.11929 15.3807 4 14.5 4ZM16.5 7H18.5C19.8807 7 21 8.11929 21 9.5V10.5C21 11.8807 19.8807 13 18.5 13H16.5" stroke="#cc1a1a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill={isHovering ? "#ff3333" : "#cc1a1a"} fillOpacity={isHovering ? "0.7" : "0.4"}/>
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill={isHovering ? "#ff3333" : "#cc1a1a"} fillOpacity={isHovering ? "0.9" : "0.7"}/>
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" stroke={isHovering ? "#ff6666" : "#ff4444"} strokeWidth="0.8" strokeLinejoin="round"/>
+          <circle cx="12" cy="12" r="2.2" fill={isHovering ? "#ffffff" : "#ff6666"}/>
         </svg>
       </motion.div>
     </>

@@ -75,7 +75,7 @@ export default function HeroSection() {
 
       {/* BG Image generated from User Prompt */}
       <div ref={bgRef} className="absolute inset-0 z-0 scale-[1.05] transition-transform duration-[120ms] ease-out pointer-events-none"
-        style={{ backgroundImage:"url('/anti_gravity_kickboxer.png')", backgroundSize:"cover", backgroundPosition:"center 30%" }} />
+        style={{ backgroundImage:"url('/hero-bg.webp')", backgroundSize:"cover", backgroundPosition:"center 30%" }} />
 
       {/* Overlays */}
       <div ref={overlayRef} className="absolute inset-0 z-[1]"

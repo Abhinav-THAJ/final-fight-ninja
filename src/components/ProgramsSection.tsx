@@ -18,7 +18,7 @@ const PROGRAMS = [
     title: "Mixed Martial Arts",
     subtitle: "Forged. Not Born.",
     desc: "Elite MMA training. Seamlessly blend striking, wrestling, and ground game. Train in our cinematic, atmospheric dojo to build explosive power, endurance, and an unbreakable body.",
-    image: "/ai_mma_fighter.png",
+    image: "/forge.jpeg",
     features: ["Caging Drills", "Takedowns", "Combat Conditioning", "Ground & Pound"],
     badge: "Fighter Track",
   },
@@ -63,7 +63,7 @@ export default function ProgramsSection() {
 
   return (
     <section id="programs" ref={sectionRef}
-      className="relative py-20 sm:py-28 lg:py-32 xl:py-36 bg-[#0b0719] overflow-hidden">
+      className="relative py-20 sm:py-28 lg:py-32 xl:py-36 bg-[#0b0719] overflow-hidden min-h-screen">
       <div className="absolute top-0 left-0 right-0 h-px red-sep" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
@@ -80,14 +80,12 @@ export default function ProgramsSection() {
             MASTER EVERY<br />
             <span className="text-gradient-red">ART OF COMBAT</span>
           </h2>
-          <p className="mt-4 text-sm lg:text-[15px] text-[#c4b5d4] max-w-xl leading-relaxed" style={{ textAlign:"center" }}>
-            Three distinct paths. One destination: excellence. Choose your discipline
-            and begin the transformation.
+          <p className="mt-4 text-sm lg:text-[15px] text-[#c4b5d4] max-w-4xl leading-relaxed" style={{ textAlign:"center" }}>
+            Choose your discipline and begin the transformation.
           </p>
         </div>
 
-        {/* Cards */}
-        <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 xl:gap-8">
+        {/* <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 xl:gap-8">
           {PROGRAMS.map(program => (
             <div key={program.id}
               className="program-card group relative flex flex-col overflow-hidden
@@ -95,7 +93,6 @@ export default function ProgramsSection() {
                          transition-all duration-500"
               style={{ background: "linear-gradient(160deg,#0e0818 0%,#08050f 100%)" }}
             >
-              {/* Badge */}
               <div className="absolute top-4 right-4 z-10">
                 <span className="text-[8px] tracking-[0.2em] uppercase px-2.5 py-1
                                  bg-[#7c3aed]/20 border border-[#7c3aed]/30 text-[#d8b4fe]">
@@ -103,7 +100,6 @@ export default function ProgramsSection() {
                 </span>
               </div>
 
-              {/* Image */}
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src={program.image} alt={program.title} fill
@@ -114,7 +110,6 @@ export default function ProgramsSection() {
                   style={{ background: "linear-gradient(to bottom,rgba(8,5,15,.1) 0%,rgba(8,5,15,.55) 100%)" }} />
               </div>
 
-              {/* Content */}
               <div className="flex flex-col gap-4 p-5 lg:p-6 flex-1">
                 <div>
                   <span className="text-[9px] tracking-[0.4em] uppercase text-[#a78bda]">{program.subtitle}</span>
@@ -157,7 +152,7 @@ export default function ProgramsSection() {
           <p className="text-[10px] tracking-[0.4em] uppercase text-[#6b5a8e]">
             All programs include a free first session
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

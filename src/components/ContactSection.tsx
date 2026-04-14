@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faEnvelope, faClock, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const LOCATIONS = [
   {
@@ -37,6 +39,10 @@ export default function ContactSection() {
   const [focused,    setFocused]   = useState<string | null>(null);
   const [activeMap,  setActiveMap] = useState(0);
 
+  const [formData, setFormData] = useState({ name: "", phone: "", branch: "", message: "" });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
   useEffect(() => {
     const init = async () => {
       try {
@@ -59,7 +65,22 @@ export default function ContactSection() {
     init();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const branchLabel = formData.branch
+      ? { loc1: "Greenfield Stadium", loc2: "Sasthamangalam", loc3: "Perumkadavila" }[formData.branch] ?? formData.branch
+      : "Not specified";
+    const text = [
+      "*🥋 New Enquiry — RogueNinja FC*",
+      "",
+      `*Name:* ${formData.name}`,
+      `*Phone:* ${formData.phone}`,
+      `*Preferred Branch:* ${branchLabel}`,
+      formData.message ? `*Message:* ${formData.message}` : "",
+    ].filter(Boolean).join("\n");
+    window.open(`https://wa.me/919048564432?text=${encodeURIComponent(text)}`, "_blank");
+    setSubmitted(true);
+  };
 
   const inputCls = (name: string) =>
     `bg-transparent border px-5 py-4 text-sm text-white w-full outline-none transition-all duration-300 ${
@@ -103,14 +124,24 @@ export default function ContactSection() {
 
             {/* Contact details */}
             {[
-              { label: "Phone", value: "+91 73563 30770  ·  +91 90485 64432", icon: "📞" },
-              { label: "Email", value: "rogueninjafc@gmail.com", icon: "✉️" },
-              { label: "Hours", value: "Mon–Sat: 06:00 – 21:00 · Sun: 08:00 – 14:00", icon: "🕐" },
+              { label: "Phone", value: "+91 73563 30770  ·  +91 90485 64432", icon: faPhone },
+              { label: "Email", value: "rogueninjafc@gmail.com", icon: faEnvelope },
+              { label: "Hours", value: "Mon–Sat: 06:00 – 21:00 · Sun: 08:00 – 14:00", icon: faClock },
             ].map(item => (
               <div key={item.label} className="flex items-start gap-4 pb-5 border-b border-[#1e0707]">
-                <div className="w-10 h-10 flex items-center justify-center text-base flex-shrink-0"
+                <div className="w-10 h-10 flex items-center justify-center flex-shrink-0"
                   style={{ background: "rgba(124,58,237,.08)", border: "1px solid rgba(124,58,237,.2)" }}>
-                  {item.icon}
+                  <FontAwesomeIcon
+                    icon={item.icon}
+                    className="text-[#7c3aed]"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  />
                 </div>
                 <div>
                   <p className="text-[9px] tracking-[0.3em] uppercase text-[#a78bda] mb-1">{item.label}</p>
@@ -122,8 +153,7 @@ export default function ContactSection() {
             {/* ── Location tabs ──────────────────────────────────── */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#cc1a1a]" />
-                <p className="text-[9px] tracking-[0.35em] uppercase text-[#6b5a8e]">Our 3 Branches</p>
+                <p className="text-[12px] tracking-[0.35em] uppercase text-[#6b5a8e]">Our Branches</p>
               </div>
 
               {/* Tab buttons */}
@@ -145,7 +175,18 @@ export default function ContactSection() {
 
               {/* Address badge */}
               <div className="flex items-start gap-3 p-4 border border-[#1a0f2e] bg-[#0e0818]">
-                <span className="text-[#cc1a1a] text-base flex-shrink-0 mt-0.5">📍</span>
+                <FontAwesomeIcon
+                  icon={faLocationDot}
+                  className="flex-shrink-0 mt-0.5"
+                  style={{
+                    width: "14px",
+                    height: "14px",
+                    background: "linear-gradient(135deg, #c084fc 0%, #7c3aed 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                />
                 <p className="text-[12px] text-[#9d8bba] leading-relaxed">{LOCATIONS[activeMap].address}</p>
               </div>
 
@@ -225,7 +266,8 @@ export default function ContactSection() {
                 <label htmlFor="contact-name" className="text-[10px] tracking-[0.3em] uppercase text-[#a07070]">
                   Full Name <span className="text-[#cc1a1a]">*</span>
                 </label>
-                <input id="contact-name" type="text" required placeholder="Your name"
+                <input id="contact-name" name="name" type="text" required placeholder="Your name"
+                  value={formData.name} onChange={handleChange}
                   onFocus={() => setFocused("name")} onBlur={() => setFocused(null)}
                   className={inputCls("name")} />
               </div>
@@ -234,7 +276,8 @@ export default function ContactSection() {
                 <label htmlFor="contact-phone" className="text-[10px] tracking-[0.3em] uppercase text-[#a07070]">
                   Phone <span className="text-[#cc1a1a]">*</span>
                 </label>
-                <input id="contact-phone" type="tel" required placeholder="+91 00000 00000"
+                <input id="contact-phone" name="phone" type="tel" required placeholder="+91 00000 00000"
+                  value={formData.phone} onChange={handleChange}
                   onFocus={() => setFocused("phone")} onBlur={() => setFocused(null)}
                   className={inputCls("phone")} />
               </div>
@@ -244,7 +287,8 @@ export default function ContactSection() {
                 <label htmlFor="contact-branch" className="text-[10px] tracking-[0.3em] uppercase text-[#a07070]">
                   Preferred Branch
                 </label>
-                <select id="contact-branch"
+                <select id="contact-branch" name="branch"
+                  value={formData.branch} onChange={handleChange}
                   onFocus={() => setFocused("branch")} onBlur={() => setFocused(null)}
                   className={inputCls("branch")} style={{ backgroundImage: "none" }}>
                   <option value="" className="bg-[#0d0202]">Select a branch…</option>
@@ -258,7 +302,8 @@ export default function ContactSection() {
                 <label htmlFor="contact-message" className="text-[10px] tracking-[0.3em] uppercase text-[#a07070]">
                   Message
                 </label>
-                <textarea id="contact-message" rows={5} placeholder="Tell us about your goals…"
+                <textarea id="contact-message" name="message" rows={5} placeholder="Tell us about your goals…"
+                  value={formData.message} onChange={handleChange}
                   onFocus={() => setFocused("message")} onBlur={() => setFocused(null)}
                   className={inputCls("message") + " resize-none"} />
               </div>

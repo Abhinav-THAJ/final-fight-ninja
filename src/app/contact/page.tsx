@@ -8,7 +8,7 @@ export default function ContactPage() {
     <main className="bg-[#060404] text-white min-h-screen overflow-x-hidden pt-[68px]">
       
       {/* Immersive Contact Hero Image */}
-      <section className="relative w-full h-[40vh] sm:h-[50vh] flex items-center justify-center border-b border-[#1e0707]">
+      {/* <section className="relative w-full h-[40vh] sm:h-[50vh] flex items-center justify-center border-b border-[#1e0707]">
         <div className="absolute inset-0">
            <Image src="/ai_contact_exterior.png" fill alt="Exclusive Fight Club Exterior" className="object-cover" priority sizes="100vw" />
            <div className="absolute inset-0 bg-gradient-to-t from-[#060404] via-[rgba(6,4,4,0.6)] to-[rgba(6,4,4,0.8)]" />
@@ -21,12 +21,12 @@ export default function ContactPage() {
              We do not accept everyone. Apply for membership.
            </p>
         </div>
-      </section>
+      </section> */}
 
       <ContactSection />
 
       {/* Atmospheric Footer Content */}
-      <section className="relative px-5 max-w-7xl mx-auto py-20 pb-28">
+      {/* <section className="relative px-5 max-w-7xl mx-auto py-20 pb-28">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="relative aspect-[16/9] rounded-sm overflow-hidden border border-[#1e0707]">
             <Image src="/ai_contact_gear.png" fill alt="Premium Fight Gear" className="object-cover transition-transform duration-700 hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
@@ -46,7 +46,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </main>
   );

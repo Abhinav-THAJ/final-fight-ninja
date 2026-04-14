@@ -125,8 +125,7 @@ export default function WhyChooseSection() {
               {/* Number */}
               <div
                 className="font-display text-5xl leading-none font-bold select-none
-                           text-transparent bg-clip-text bg-gradient-to-b from-[#1a0f2e] to-transparent
-                           group-hover:from-[#7c3aed]/40 transition-all duration-500"
+                           text-[#3d2a6e] group-hover:text-[#7c3aed] transition-colors duration-500"
               >
                 {item.icon}
               </div>

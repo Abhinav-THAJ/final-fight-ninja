@@ -100,7 +100,7 @@ export default function AthletesSection() {
           </h2>
           <div className="w-16 h-1 bg-[#cc1a1a] mx-auto mb-6 shadow-[0_0_15px_rgba(204,26,26,0.5)]" />
           <p className="text-[#c4b5d4] text-sm lg:text-base tracking-[0.08em] max-w-2xl mx-auto">
-            Meet the champions who forge their legacy through sweat, discipline, and relentless determination.
+            Meet the coaches who shape fighters, sharpen skills, and build winning mindsets.          
           </p>
         </div>
 

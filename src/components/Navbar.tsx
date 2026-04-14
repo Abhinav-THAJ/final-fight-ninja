@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: "Home",     href: "/" },
   { label: "About",    href: "/about" },
   { label: "Programs", href: "/programs" },
+  { label: "Gallery",  href: "/gallery" },
   { label: "Contact",  href: "/contact" },
 ];
 
@@ -33,7 +34,7 @@ export default function Navbar() {
         transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.25 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
           scrolled
-            ? "bg-[#060404]/96 backdrop-blur-xl border-b border-[#1e0707]"
+            ? " backdrop-blur-xl"
             : "bg-transparent"
         }`}
       >
@@ -78,7 +79,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <Link
-            href="/join"
+            href="/contact"
             className="hidden md:inline-flex items-center
                        text-[11px] font-semibold tracking-[0.2em] uppercase
                        px-6 lg:px-7 py-2.5
